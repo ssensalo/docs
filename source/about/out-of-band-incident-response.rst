@@ -18,7 +18,7 @@ Out-of-band collaboration provides a persistent, independent channel for coordin
 **Benefits**
 
 - **Preserve communication during infrastructure failures** with secure, dedicated OOB deployments across private Kubernetes clusters or Azure Marketplace-hosted environments. :ref:`Explore deployment options <deploy/server/server-deployment-planning:deployment options>`.
-- **Safeguard sensitive communications** with FIPS 140-2 validated and STIG-hardened images, ensuring secure operation in classified or regulated environments.
+- **Safeguard sensitive communications** with FIPS 140-3 validated and STIG-hardened images, ensuring secure operation in classified or regulated environments.
 - **Maintain continuity across platforms** with :doc:`multi-device access </guides/deployment-guide>`—including web, desktop, and mobile experiences—even when primary tools are offline.
 - **Enforce strict access controls** using :doc:`role-based permissions </onboard/advanced-permissions>` and :ref:`audit logging <manage/logging:audit logging>` to limit risk exposure during high-stakes operations.
 
@@ -31,7 +31,7 @@ Outages and downtime threaten both productivity and revenue. In large enterprise
 
 - **Enable immediate coordination during outages** using :ref:`private cloud or hybrid deployment options <deploy/server/server-deployment-planning:deployment options>` to maintain operational continuity outside your primary infrastructure.
 - **Scale communication globally** with Mattermost’s :doc:`high availability and horizontal scalability architecture </scale/scaling-for-enterprise>`—supporting tens of thousands of users across enterprise, field, or classified environments.
-- **Accelerate outage recovery** using :doc:`Collaborative Playbooks </guides/repeatable-processes>` that automate outage response steps and ensure team accountability during time-critical events.
+- **Accelerate outage recovery** using :doc:`Collaborative Playbooks </guides/workflow-automation>` that automate outage response steps and ensure team accountability during time-critical events.
 
 Incident Response in Crisis Conditions
 --------------------------------------
@@ -42,7 +42,7 @@ Cyber breaches demand swift, coordinated action across affected teams. Every del
 
 - **Ensure secure response coordination** through :doc:`private 1:1 calling and screen sharing </collaborate/make-calls>` for uninterrupted incident discussions within an isolated Mattermost environment.
 - **Confirm alerts and share threat intelligence** with integrated tools like ServiceNow, Prometheus, and Grafana via the :doc:`Mattermost integrations platform </about/integrations>`.
-- **Reduce mean time to resolution (MTTR)** by executing :doc:`structured incident playbooks </guides/repeatable-processes>` that handle triage, task assignment, and escalation with full visibility and auditability.
+- **Reduce mean time to resolution (MTTR)** by executing :doc:`structured incident playbooks </guides/workflow-automation>` that handle triage, task assignment, and escalation with full visibility and auditability.
 
 Sensitive or Classified Collaboration
 --------------------------------------
