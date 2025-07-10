@@ -37,10 +37,9 @@ Start a call
 .. tab:: Web/Desktop
 
   To start a call, select **Start call** in the channel header. When you start a call, you become the call host by default. See the `host controls <#host-controls>`__ section below for details on host controls available to ensure calls run smoothly.
-  
-    
+
   .. tip::
-      
+
     - When you start a call in a channel, you're muted by default. In a direct or group message you're unmuted by default.
     - You can move the call widget to a different area of your screen.
     - Alternatively, you can start a call using the ``/call start`` slash command.
@@ -113,6 +112,25 @@ To share your screen:
 1. In the call widget, select **Start presenting**.
 2. Select the screen you want to share.
 3. To stop sharing, select the **Stop presenting** icon or the **Stop sharing** option.
+
+Share audio during screen sharing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From Mattermost Calls plugin v1.9.0, you can share audio along with your screen during screen sharing. To enable this feature, you must first turn on the **Share sound with screen** preference in your Calls settings by going to **Settings > Plugin Preferences > Calls**. This setting is stored locally on each client and is not synchronized across devices.
+
+.. note::
+
+  Audio sharing support varies by platform and browser:
+
+  **Web browsers:**
+
+  - **Chrome-based browsers only** (Google Chrome, Chromium, Microsoft Edge): When sharing a browser tab, you'll have the option to include audio from that tab. On Windows only, you can also share system sounds when sharing the entire screen.
+  - **Other browsers**: Audio sharing is not supported.
+
+  **Desktop app:**
+
+  - **Windows and Linux**: System audio is shared when sharing the entire screen.
+  - **macOS**: Audio sharing is not supported due to system limitations.
 
 React using emojis
 ------------------

@@ -640,40 +640,6 @@ This setting controls whether or not the channel link autocomplete triggers imme
 | This feature's ``config.json`` setting is ``"ExperimentalSettings.DelayChannelAutocomplete": false`` with options ``true`` and ``false``. |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 
-Enable dedicated export filestore target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This setting enables you to specify an alternate filestore target for Mattermost :doc:`bulk exports </manage/bulk-export-tool>` and :doc:`compliance exports </comply/compliance-export>`. 
-
-**True**: A new ``ExportFileBackend()`` is generated under ``FileSettings`` using new configuration values for the following configuration settings:
-
-- ``ExportDriverName``
-- ``ExportDirectory``
-- ``ExportAmazonS3AccessKeyId``
-- ``ExportAmazonS3SecretAccessKey``
-- ``ExportAmazonS3Bucket``
-- ``ExportAmazonS3PathPrefix``
-- ``ExportAmazonS3Region``
-- ``ExportAmazonS3Endpoint``
-- ``ExportAmazonS3SSL``
-- ``ExportAmazonS3SignV2``
-- ``ExportAmazonS3SSE``
-- ``ExportAmazonS3Trace``
-- ``ExportAmazonS3RequestTimeoutMilliseconds``
-- ``ExportAmazonS3PresignExpiresSeconds``
-
-**False**: Standard :ref:`file storage <configure/environment-configuration-settings:file storage>` is used (or when the configuration setting is omitted).
-
-When an alternate filestore target is configured, Mattermost Cloud admins can generate an S3 presigned URL for exports using the ``/exportlink [job-id|zip file|latest]`` slash command. See the :ref:`Mattermost data migration <manage/cloud-data-export:create the export>` documentation for details. Alternatively, Cloud and self-hosted admins can use the :ref:`mmctl export generate-presigned-url <manage/mmctl-command-line-tool:mmctl export generate-presigned-url>` command to generate a presigned URL directly from mmctl.
-
-.. note::
-
-  Generating an S3 presigned URL requires the feature flag ``EnableExportDirectDownload`` to be set to ``true``,  the storage must be compatible with generating an S3 link, and this experimental configuration setting must be set to ``true``. Presigned URLs for exports aren't supported for systems with shared storage.
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| This feature's ``config.json`` setting is ``"ExperimentalSettings.DedicatedExportStore": false`` with options ``true`` and ``false``.     |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-
 YouTube referrer policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -951,6 +917,20 @@ This setting can be left as default unless you are seeing audit write failures i
 | This feature's ``config.json`` setting is ``".ExperimentalAuditSettings.FileMaxQueueSize": 1000`` with numerical input. |
 +-------------------------------------------------------------------------------------------------------------------------+
 
+.. config:setting:: audit-logging-certificate
+  :displayname: Audit logging certificate upload (Audit Logging > Cloud Enterprise)
+  :systemconsole: Audit Log Settings > Certificate
+  :configjson: N/A
+  :environment: N/A
+  :description: Cloud Enterprise customers can upload and manage a certificate for audit logging encryption on Syslog or TCP logging targets.
+
+Certificate
+~~~~~~~~~~~~
+
+Cloud Enterprise customers can upload and manage a certificate for audit logging encryption on Syslog or TCP logging targets. The ability to upload a certificate is only available when the feature flag ``ExperimentalAuditSettingsSystemConsoleUI`` is enabled.
+
+Upload the certificate PEM file in the System Console by going to **System Console > Audit Log Settings > Certificate** and selecting **File/Remove Certificate**. The certificate file can be stored in the filestore or stored locally on the filesystem. 
+
 .. config:setting:: advanced-logging
   :displayname: Advanced Logging (Audit Logging > Self-Hosted)
   :systemconsole: Experimental > Features
@@ -1002,49 +982,7 @@ Select the themes that can be chosen by users when ``EnableThemeSelection`` is s
 | This feature's ``config.json`` setting is ``"AllowedThemes": []`` with string array input consisting of the options ``"default"``, ``"organization"``, ``"mattermostDark"``, and ``"windows10"``, such as ``["mattermostDark", "windows10"]``.     |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. config:setting:: maximum-users-for-statistics
-  :displayname: Maximum users for statistics (Experimental)
-  :systemconsole: N/A
-  :configjson: MaxUsersForStatistics
-  :environment: N/A
-  :description: Sets the maximum number of users on the server before statistics for total posts, total hashtag posts, total file posts, posts per day, and activated users with posts per day are disabled. Default is **2500** users.
 
-Maximum users for statistics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. include:: ../_static/badges/ent-pro-only.rst
-  :start-after: :nosearch:
-
-This setting isn't available in the System Console and can only be set in ``config.json``.
-
-Sets the maximum number of users on the server before statistics for total posts, total hashtag posts, total file posts, posts per day, and activated users with posts per day are disabled.
-
-This setting is used to maximize performance for large Enterprise deployments.
-
-+---------------------------------------------------------------------------------------------------+
-| This feature's ``config.json`` setting is ``"MaxUsersForStatistics": 2500`` with numerical input. |
-+---------------------------------------------------------------------------------------------------+
-
-.. config:setting:: batch-size
-  :displayname: Batch size (Experimental)
-  :systemconsole: N/A
-  :configjson: BatchSize
-  :environment: N/A
-  :description: Determines how many new posts are batched together to a compliance export file. Default is **10000** posts.
-
-Batch size
-~~~~~~~~~~
-
-.. include:: ../_static/badges/ent-only.rst
-  :start-after: :nosearch:
-
-This setting isn't available in the System Console and can only be set in ``config.json``.
-
-Determines how many new posts are batched together to a compliance export file.
-
-+----------------------------------------------------------------------------------------+
-| This feature's ``config.json`` setting is ``"BatchSize": 10000`` with numerical input. |
-+----------------------------------------------------------------------------------------+
 
 .. config:setting:: file-location
   :displayname: File location (Experimental)

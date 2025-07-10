@@ -28,7 +28,7 @@ Use the following guides to configure exports for `CSV <#csv>`__, `Actiance XML 
 .. note::
 
    - For self-hosted deployments, compliance exports are written to the ``exports`` subdirectory of the configured filestore in the chosen format. This will either be in the :ref:`Local Storage directory <configure/environment-configuration-settings:file storage>` or the Mattermost S3 bucket if S3 storage is configured.
-   - Alternatively, you can specify an alternate filestore target and generate an S3 presigned URL for compliance exports. See the :ref:`dedicated export filestore target <configure/experimental-configuration-settings:enable dedicated export filestore target>` configuration settings documentation for details.
+   - Alternatively, you can specify an alternate filestore target and generate an S3 presigned URL for compliance exports. See the :ref:`dedicated export filestore target <configure/environment-configuration-settings:enable dedicated export filestore target>` configuration settings documentation for details.
    - Compliance exports don't contain posts sent before the feature was enabled. For self-hosted deployments, you can export past history via the ``export`` :doc:`command line tool <../manage/command-line-tools>`. 
 
 CSV
@@ -41,6 +41,7 @@ CSV
 5. Select **Save**.
 
 .. tab:: From Mattermost v10.5
+   :parse-titles:
 
    You can review export job status in the System Console.
 
@@ -64,7 +65,8 @@ CSV
       ├── metadata.json
       └── actiance_export.xml
 
-   **Updated CSV export fields**
+   Updated CSV export fields
+   --------------------------
 
    **Post Creation Time** is always the ``CreateAt`` for messages and attachments, or ``JoinTime`` and ``LeaveTime`` for participant join and leave events, respectively.
 
@@ -97,6 +99,7 @@ Actiance XML
    In Actiance XML exports, channel type is prepended to the channel names.
 
 .. tab:: From Mattermost v10.5
+   :parse-titles:
 
    You can review export job status in the System Console. Once you've selected Actiance XML as your file format, you can set up an integration with Actiance Vantage archive system. 
 
@@ -119,7 +122,8 @@ Actiance XML
       ├── 20240808
       └── actiance_export.xml
 
-   **Updated Actiance XML export fields**
+   Updated Actiance XML export fields
+   ----------------------------------
 
    If an XML field is empty, it won't be exported. This is a change from previous Mattermost releases, where empty XML nodes were exported.
 
@@ -174,6 +178,11 @@ See the `Global Relay <#global-relay-eml>`__ section for details on updated Glob
 
 Frequently Asked Questions (FAQ)
 --------------------------------
+
+Are Playbooks and Boards data included in compliance exports?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+No. Compliance exports only include channel messages, direct messages, file uploads, and posts from plugins/bots/webhooks. Data from Mattermost Playbooks (including run activities, status updates, and retrospectives) and Mattermost Boards (including cards, comments, and board activities) are not included in the compliance export functionality. Organizations requiring compliance archiving of Playbooks and Boards data should consider separate data retention strategies for these features.
 
 How do I export past history?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

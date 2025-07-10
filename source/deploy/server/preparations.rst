@@ -4,15 +4,23 @@ Prepare your Mattermost Server environment
 This guide outlines the key preparation steps required before installing the Mattermost Server, focusing on setting up the database and file storage systems.
 
 .. toctree::
-  :maxdepth: 1
-  :hidden:
-  :titlesonly:
+    :maxdepth: 1
+    :hidden:
+    :titlesonly:
 
-   Review software and hardware requirements </deploy/software-hardware-requirements>
-   Set up an NGINX proxy </deploy/server/setup-nginx-proxy>
-   Configure Mattermost Calls </configure/calls-deployment>
-   Set up TLS </deploy/server/setup-tls>
-   Use an image proxy </deploy/server/image-proxy>
+    Review software and hardware requirements </deploy/software-hardware-requirements>
+    Set up an NGINX proxy </deploy/server/setup-nginx-proxy>
+    Configure Mattermost Calls </configure/calls-deployment>
+    Set up TLS </deploy/server/setup-tls>
+    Use an image proxy </deploy/server/image-proxy>
+
+Before installing Mattermost Server, review the following preparation requirements:
+
+* :doc:`Review software and hardware requirements </deploy/software-hardware-requirements>` - Ensure your system meets the minimum requirements for Mattermost deployment.
+* :doc:`Set up an NGINX proxy </deploy/server/setup-nginx-proxy>` - Configure NGINX as a reverse proxy for enhanced security and performance.
+* :doc:`Configure Mattermost Calls </configure/calls-deployment>` - Set up real-time communication capabilities for voice and video calls.
+* :doc:`Set up TLS </deploy/server/setup-tls>` - Enable secure communication with SSL/TLS encryption.
+* :doc:`Use an image proxy </deploy/server/image-proxy>` - Configure image proxy for enhanced privacy and security.
 
 Database preparation
 --------------------
@@ -34,6 +42,8 @@ PostgreSQL v13+ is required for Mattermost server installations. :doc:`MySQL dat
       .. code-block:: sql
 
          CREATE DATABASE mattermost WITH ENCODING 'UTF8' LC_COLLATE='en_US.UTF-8' LC_CTYPE='en_US.UTF-8' TEMPLATE=template0;
+
+   If this steps fails with an error message like ``invalid LC_COLLATE locale name: "en_US.UTF-8"``, you need to generate the locale first using ``locale-gen en_US.UTF-8``.
 
    c. Create the Mattermost user with a secure password:
 
